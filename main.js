@@ -3,6 +3,7 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const NatAPI = require('nat-api')
 const client = new NatAPI()
+client.enablePMP = true;
 
 function createWindow() {
 

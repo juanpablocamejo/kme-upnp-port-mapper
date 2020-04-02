@@ -7,13 +7,20 @@
 
 const { ipcRenderer } = require('electron');
 const btn1 = document.querySelector("#btn1");
+const msg1 = document.querySelector("#msg")
+
 btn1.addEventListener("click", () => {
     const port = document.querySelector("#txt1").value;
-    respuesta = ipcRenderer.sendSync("open-port", port)
-    document.querySelector("#msg").innerHTML = respuesta;
+    const val = parseInt(`${txt1.value}`)
+    const esPuertoValido = val && val > 0 && val <= 65535
+        msg1.innerHTML = esPuertoValido ? ipcRenderer.sendSync("open-port", port) : "Número de puerto inválido."
 }
 )
 const txt1 = document.querySelector("#txt1")
+
+txt1.addEventListener("keyup",()=>{
+    btn1.disabled = !parseInt(txt1.value)
+})
 
 txt1.addEventListener("keydown", (evt) => {
     const teclaPermitida = evt.keyCode < 57
@@ -21,7 +28,6 @@ txt1.addEventListener("keydown", (evt) => {
     const esPuertoValido = val && val > 0 && val <= 65535
     if (!teclaPermitida || !esPuertoValido) {
         evt.preventDefault();
-    } else {
-        btn1.disabled = !txt1.value.length
     }
+
 })
