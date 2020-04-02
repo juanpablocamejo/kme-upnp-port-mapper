@@ -1,0 +1,21 @@
+{
+  "name": "kme-upnp-port-mapper",
+  "version": "1.0.0",
+  "description": "UPNP Port Mapper",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . --overwrite",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "Juan Pablo Camejo",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.2.0",
+    "electron-rebuild": "^1.10.1"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "nat-api": "^0.1.3"
+  }
+}
