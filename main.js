@@ -10,7 +10,6 @@ function createWindow() {
   ipcMain.on("open-port", (event, arg) => {
     const port = parseInt(arg)
     client.unmap(port,(err)=>{
-      console.log(err)
       client.map({ publicPort: port, privatePort: port, description: `kmeUPNP_${port}` }, function (err) {
         if (err) {
           event.returnValue = `Error: No se pudo abrir el puerto ${port}.`
